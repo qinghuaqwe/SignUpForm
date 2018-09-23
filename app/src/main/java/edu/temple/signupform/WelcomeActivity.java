@@ -9,23 +9,19 @@ import android.widget.TextView;
 public class WelcomeActivity extends Activity {
     public static String Name;
     TextView WelcomeName;
+    String name;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome);
 
-        //WelcomeName = findViewById(R.id.WelcomeName);
+        WelcomeName = findViewById(R.id.WelcomeName);
 
         Intent intent = getIntent();
-        //intent.getStringExtra("username");
-        String username = intent.getStringExtra("username");
-        WelcomeName.setText("Welcome," + username + ", to the SignUpForm App");
 
-
-
-
-
+        String message = intent.getStringExtra(FormActivity.EXTRA_MESSAGE);
+        WelcomeName.setText("Welcome," + " " + message + ", to the SignUpForm App");
 
     }
 }

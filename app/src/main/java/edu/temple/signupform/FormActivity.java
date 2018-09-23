@@ -20,6 +20,7 @@ public class FormActivity extends Activity {
     EditText password;
     EditText password2;
     Button save;
+    public static final String EXTRA_MESSAGE = "com.example.myfirstapp.MESSAGE";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,7 +38,8 @@ public class FormActivity extends Activity {
             @Override
             public void onClick(View v) {
                 Intent startActivityIntent = new Intent(FormActivity.this, WelcomeActivity.class);
-                startActivityIntent.putExtra(WelcomeActivity.Name, "username");
+                String username = name.getText().toString();
+                startActivityIntent.putExtra(/*WelcomeActivity.Name*/EXTRA_MESSAGE, username);
                 if (TextUtils.isEmpty(name.getText()) || TextUtils.isEmpty(email.getText()) || TextUtils.isEmpty(password.getText()) || TextUtils.isEmpty(password2.getText())){
                     Toast.makeText(getApplication(), "Please enter all information", Toast.LENGTH_SHORT).show();
                 }
@@ -46,7 +48,7 @@ public class FormActivity extends Activity {
                 }
                 else{
                 startActivity(startActivityIntent);
-                }
+               }
             }
         });
 
